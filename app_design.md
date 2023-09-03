@@ -27,3 +27,30 @@ Browsable Admin Interface (Django Admin)
 + `app/user/` - User related code
 + `app/recipe/` - recipe related code
 
+# Create Secrets
+In Dockerhub user setting, create new access token (it displays only once, so take note!)
+In the project Github repos setting crete 2 variable to contains the secrets
++ DOCKERHUB_USER: username of dockerhub
++ DOCKERHUB_TOKEN: the token that we have just created
+
+# Create Dockerfile and docker compose
+## Dockerfike:
+The file will help us with creating a docker imageL
++ choose a base python image
++ Install dependencies in the image
++ setup users
+
+## Docker compose:
+define how oue images should be used by define 'services':
++ Name of the service
++ port mapping
++ Volume mappings
+
+run all commands through docker compose
+```shell
+docker-compose run --rm app sh -c "python manage.py collectstatic"
+```
++ `--rm` tells docker composed to remove the container after it is run
++ `app` name of the service
++ `sh -c` passes in a shell command
+
