@@ -21,3 +21,14 @@ Test client in Django give us a dummy web browser and has simulate authenticatio
 Tempory database of Django help use create and clear a test database
 API test client is part of Rest Framework
 We either creat `test.py` in our app or have `test` directory that included all the test. The directory must have `__init__.py` 
++ `SimpleTestCase`: No database integration, useful for test that does not need database
++ `TestCase`: integrated database useful for code that uses database
+
+## Test structureL
++ import test class
++ import object to test
++ define the test class
++ add methods for testing, must dtart with `test_`
++ Setup inputs
++ Execute the code to be tested
++ check output
