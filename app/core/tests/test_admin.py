@@ -11,8 +11,8 @@ class AdminSitetest(TestCase):
     '''Test for django admin'''
     def setUp(self):
         '''create user and client'''
-        #crete client to simulate http request
-        self.client=Client()
+        # create client to simulate http request
+        self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
             email='adminuser@example.com',
             password='testpass123',
@@ -44,5 +44,5 @@ class AdminSitetest(TestCase):
         '''test user creation page works'''
         url = reverse('admin:core_user_add')
         response = self.client.get(url)
-        
+
         self.assertEqual(response.status_code, 200)
