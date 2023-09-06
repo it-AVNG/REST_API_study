@@ -27,8 +27,22 @@ class AdminSitetest(TestCase):
     def test_users_list(self):
         '''user are listed on page.'''
         url = reverse('admin:core_user_changelist')
-        result = self.client.get(url)
+        response = self.client.get(url)
 
-        self.assertContains(result, self.user.name)
-        self.assertContains(result, self.user.email)
-        self.assertContains(result, self.admin_user.email)
+        self.assertContains(response, self.user.name)
+        self.assertContains(response, self.user.email)
+        self.assertContains(response, self.admin_user.email)
+
+    def test_edit_user_page(self):
+        '''test edit user page'''
+        url = reverse('admin:core_user_change', args=[self.user.id])
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_ceate_user_page(self):
+        '''test user creation page works'''
+        url = reverse('admin:core_user_add')
+        response = self.client.get(url)
+        
+        self.assertEqual(response.status_code, 200)
